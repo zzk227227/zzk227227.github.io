@@ -2,28 +2,22 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="zzk" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>张泽凯的网站</title>
     <meta name="description" content="欢迎来到张泽凯的网站！" />
 
-    <!--Inter UI font-->
     <link href="https://rsms.me/inter/inter-ui.css" rel="stylesheet">
-
-    <!--vendors styles-->
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/slick-carousel/1.8.1/slick.min.css">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
 
-    <!-- Bootstrap CSS / Color Scheme -->
     <link rel="stylesheet" href="css/default.css" id="theme-color">
     <link rel="stylesheet" href="css/fz.css">
 </head>
 
 <body>
 
-    <!--navigation-->
     <section class="smart-scroll">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-md navbar-dark">
@@ -55,7 +49,6 @@
         </div>
     </section>
 
-    <!--hero header-->
     <section class="py-7 py-md-0 bg-hero" id="home">
         <div class="container">
             <div class="row vh-md-100">
@@ -76,56 +69,7 @@
         </div>
     </section>
     <script>
-        const ap = new APlayer({
-            container: document.getElementById('aplayer'),
-            fixed: true,                //是否附着页面底部，否为false
-            autoplay: true,             //是否自动播放，否为false,移动端不能生效
-            volume: 0.6,                //初始音量（0~1）
-            lrcType: 3,                 //歌词模式（1、HTML模式 2、js模式 3、lrc文件模式）
-            mutex: false,                //互斥模式：阻止多个播放器同时播放，当前播放器播放时暂停其他播放器
-            order: 'list',            //音频循环顺序（'list'：顺序, 'random'：随机）
-            preload: 'none',            //预加载（'none'：不预加载, 'metadata'：元数据, 'auto'：自动）
-            listFolded: true,          //列表默认折叠，开启为true
-            theme: '#ee8243',           //主题颜色
-            audio: [{
-                name: '黑色毛衣',           //歌曲名称
-                artist: '周杰伦',       //歌曲作者
-                url: 'http://cloud.dhhyxr.top/api/v3/file/get/411/%E5%91%A8%E6%9D%B0%E4%BC%A6-%E9%BB%91%E8%89%B2%E6%AF%9B%E8%A1%A3.mp3?sign=scL50RFEuQcnkseg0gAUmwmqA6n_XC6WPHlAuHgxEZg%3D%3A0',         //歌曲源文件地址
-                cover: 'http://cloud.dhhyxr.top/api/v3/file/get/412/%E3%80%8A%E5%91%A8%E6%9D%B0%E4%BC%A6-%E9%BB%91%E8%89%B2%E6%AF%9B%E8%A1%A3.mp3%E3%80%8B%E5%B0%81%E9%9D%A2%E5%9B%BE%E7%89%87.jpg?sign=rwQMGjZIb5QxZs5Wkt8LkNjPT4Zrbw6mn22BOFX9WoQ%3D%3A0',     //歌曲封面地址
-                lrc: './static/lrc/黑色毛衣.lrc',        //歌曲的歌词文件
-                theme: '#00eaff'        //主题颜色（优先）
-            }, {
-                name: '蜗牛-Live',           //歌曲名称
-                artist: '周杰伦',           //歌曲作者
-                url: 'http://cloud.dhhyxr.top/api/v3/file/get/420/%E5%91%A8%E6%9D%B0%E4%BC%A6-%E8%9C%97%E7%89%9B%28Live%29-%E3%80%8A%E4%B8%80%E4%B8%87%E5%85%AC%E9%87%8C%E7%9A%84%E7%BA%A6%E5%AE%9A%E3%80%8B%E7%94%B5%E5%BD%B1%E4%B8%BB%E9%A2%98%E6%9B%B2.mp3?sign=X-TbXeM_5kdQHy1EZ0xThqVt2d7rvs1q2BVU4YJHbis%3D%3A0',     //歌曲源文件地址
-                cover: 'http://cloud.dhhyxr.top/api/v3/file/get/419/%E3%80%8A%E5%91%A8%E6%9D%B0%E4%BC%A6-%E8%9C%97%E7%89%9B%28Live%29-%E3%80%8A%E4%B8%80%E4%B8%87%E5%85%AC%E9%87%8C%E7%9A%84%E7%BA%A6%E5%AE%9A%E3%80%8B%E7%94%B5%E5%BD%B1%E4%B8%BB%E9%A2%98%E6%9B%B2.mp3%E3%80%8B%E5%B0%81%E9%9D%A2%E5%9B%BE%E7%89%87.jpg?sign=fnKxcjbIEtfXaOiVBEB6cNTbT4cJxtZiiH-y61YxfGg%3D%3A0',     //歌曲封面地址
-                lrc: './static/lrc/蜗牛.lrc',   //歌曲的歌词文件
-                theme: '#ffffff'           //主题颜色（优先）]
-            }, {
-                name: '米兰的小铁匠',           //歌曲名称
-                artist: '周杰伦',           //歌曲作者
-                url: 'http://cloud.dhhyxr.top/api/v3/file/get/415/%E5%91%A8%E6%9D%B0%E4%BC%A6-%E7%B1%B3%E5%85%B0%E7%9A%84%E5%B0%8F%E9%93%81%E5%8C%A0.mp3?sign=aJKcg6k5Cc6M82BtWYvXhEXMg0Lwix5PUUGfV9a2NIM%3D%3A0',     //歌曲源文件地址
-                cover: 'http://cloud.dhhyxr.top/api/v3/file/get/414/%E3%80%8A%E5%91%A8%E6%9D%B0%E4%BC%A6-%E7%B1%B3%E5%85%B0%E7%9A%84%E5%B0%8F%E9%93%81%E5%8C%A0.mp3%E3%80%8B%E5%B0%81%E9%9D%A2%E5%9B%BE%E7%89%87.jpg?sign=TE_th0Gu9waylPYLktUOPDhKrYY_965DtJmCcGSlF5I%3D%3A0',     //歌曲封面地址
-                lrc: './static/lrc/米兰的小铁匠.lrc',   //歌曲的歌词文件
-                theme: '#ffffff'           //主题颜色（优先）]
-            }, {
-                name: '小酒窝',           //歌曲名称
-                artist: '林俊杰、蔡卓妍',           //歌曲作者
-                url: 'http://cloud.dhhyxr.top/api/v3/file/get/417/%E6%9E%97%E4%BF%8A%E6%9D%B0_%E8%94%A1%E5%8D%93%E5%A6%8D-%E5%B0%8F%E9%85%92%E7%AA%9D-%E3%80%8A%E7%88%B1%E6%83%85%E7%9D%A1%E9%86%92%E4%BA%86%E3%80%8B%E7%94%B5%E8%A7%86%E5%89%A7%E6%8F%92%E6%9B%B2.mp3?sign=din4VoyDn3rrsmxMWXW_nDwu2ByHtfJOEAVFbZVFPS8%3D%3A0',     //歌曲源文件地址
-                cover: 'http://cloud.dhhyxr.top/api/v3/file/get/418/%E3%80%8A%E6%9E%97%E4%BF%8A%E6%9D%B0_%E8%94%A1%E5%8D%93%E5%A6%8D-%E5%B0%8F%E9%85%92%E7%AA%9D-%E3%80%8A%E7%88%B1%E6%83%85%E7%9D%A1%E9%86%92%E4%BA%86%E3%80%8B%E7%94%B5%E8%A7%86%E5%89%A7%E6%8F%92%E6%9B%B2.mp3%E3%80%8B%E5%B0%81%E9%9D%A2%E5%9B%BE%E7%89%87.jpg?sign=JLoFpOOQfK9Mgv6v2BxRfUQ-ZgUN5ldHKy_5ouFkYx8%3D%3A0',     //歌曲封面地址
-                lrc: './static/lrc/小酒窝.lrc',   //歌曲的歌词文件
-                theme: '#ffffff'           //主题颜色（优先）]
-            }, {
-                name: 'chkchkboom(我老妹喜欢的歌)',           //歌曲名称
-                artist: 'stray lids',           //歌曲作者
-                url: 'http://cloud.dhhyxr.top/api/v3/file/get/422/StrayKids.mp3?sign=BUGj74ysRkUpVtW_4eNa1ZT3SrtZG6t_csIM11ouyfE%3D%3A0',     //歌曲源文件地址
-                cover: 'http://cloud.dhhyxr.top/api/v3/file/get/421/StrayKids.jpg?sign=Z2nrwefR0zcP_2ZYmaxsnKG6k6bR00iUyE7091LrqV8%3D%3A0',     //歌曲封面地址
-                lrc: './static/lrc/StrayKids.lrc',   //歌曲的歌词文件
-                theme: '#ffffff'           //主题颜色（优先）]
-            }]
-        });
-    </script>
-    <!-- features section -->
+       
     <section class="pt-6 pb-7" id="features">
         <div class="container">
             <div class="row">
