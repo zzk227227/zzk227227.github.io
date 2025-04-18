@@ -202,7 +202,7 @@
                 const check = () => {
                     function doCheck(a) {
                         if (("" + a / a).length !== 1 || a % 20 === 0) {
-                            document.body.innerHTML = '<h1>调试模式已被禁止</h1>';
+                            document.body.innerHTML = '<p>调试模式已被禁止</p>';
                         }
                         doCheck(++a);
                     }
