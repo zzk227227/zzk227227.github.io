@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张泽凯的签名墙</title>
+    <style>
+        :root {
+            --neon-cyan: #00ff9d;
+            --neon-magenta: #ff003c;
+            --neon-purple: #6c00ff;
+            --dark-bg: #0a0a0a;
+            --matrix-green: #0fff50;
+        }
+
+        body {
+            background: var(--dark-bg);
+            color: #fff;
+            font-family: 'Terminus', monospace;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .cyber-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .cyber-border {
+            position: relative;
+            padding: 20px;
+            margin: 20px 0;
+            background: rgba(10, 10, 10, 0.9);
+            border-radius: 5px;
+            box-shadow: 0 0 20px var(--neon-cyan);
+        }
+
+        .cyber-border::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(
+                45deg,
+                var(--neon-cyan),
+                var(--neon-purple),
+                var(--neon-magenta)
+            );
+            z-index: -1;
+            animation: borderFlow 3s linear infinite;
+        }
+
+        @keyframes borderFlow {
+            0% { opacity: 0.8; }
+            50% { opacity: 0.3; }
+            100% { opacity: 0.8; }
+        }
+
+        .sign-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .sign-form input {
+            flex: 1;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            border-radius: 3px;
+            outline: none;
+        }
+
+        .sign-form button {
+            padding: 10px 20px;
+            background: none;
+            border: 2px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .sign-form button:hover {
+            background: rgba(0, 255, 157, 0.1);
+            color: var(--neon-purple);
+        }
+
+        .signature-list {
+            list-style: none;
+            padding: 0;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .signature-item {
+            padding: 10px;
+            margin: 10px 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .signature-item::before {
+            content: ">> ";
+            color: var(--neon-purple);
+        }
+    </style>
+</head>
+<body>
+    <div class="cyber-container">
+        <h1 style="color: var(--neon-purple); text-align: center;">NEURAL AUTOGRAPH</h1>
+        
+        <div class="cyber-border">
+            <form class="sign-form" id="signForm">
+                <input type="text" id="username" placeholder="留下你的姓名吧~~" required>
+                <button type="submit" onclick="addSignature()">添加签名</button>
+            </form>
+
+            <ul class="signature-list" id="signatureList">
+                <!-- 签名将在此处动态添加 -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // 加载已有的签名
+        const signatures = localStorage.getItem('signatures') ? 
+            JSON.parse(localStorage.getItem('signatures')) : [];
+        
+        // 初始化显示
+        signatures.forEach(signature => {
+            addSignatureToDom(signature);
+        });
+
+        // 添加签名功能
+        function addSignature() {
+            const username = document.getElementById('username').value.trim();
+            if (username) {
+                addSignatureToDom(username);
+                signatures.push(username);
+                localStorage.setItem('signatures', JSON.stringify(signatures));
+                document.getElementById('username').value = '';
+            }
+        }
+
+        function addSignatureToDom(text) {
+            const li = document.createElement('li');
+            li.className = 'signature-item';
+            li.textContent = text;
+            document.getElementById('signatureList').appendChild(li);
+        }
+
+        // 滚动条样式
+        const signatureList = document.querySelector('.signature-list');
+        signatureList.style.scrollBehavior = 'smooth';
+    </script>
+</body>
+</html>
