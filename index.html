@@ -51,7 +51,7 @@
                 const check = () => {
                     function doCheck(a) {
                         if (("" + a / a).length !== 1 || a % 20 === 0) {
-                            document.body.innerHTML = '<p>调试模式已被禁止</p>';
+                            document.body.innerHTML = '<p>Error</p>';
                         }
                         doCheck(++a);
                     }
