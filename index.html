@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
     <!-- Required meta tags -->
@@ -19,47 +19,156 @@
     <!-- Bootstrap CSS / Color Scheme -->
     <link rel="stylesheet" href="css/default.css" id="theme-color">
     <link rel="stylesheet" href="css/fz.css">
+    
+    <!-- 增强安全脚本（内联，不修改任何CSS） -->
+    <script>
+        (function() {
+            // ---------- 基础防护（保留原有功能并增强）----------
+            // 1. 阻止右键菜单
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                return false;
+            });
+            
+            // 2. 阻止文本选择（增强兼容性，优先使用样式表规则，如失败则添加全局样式）
+            try {
+                // 尝试使用第一个样式表插入规则（保留原有方式，避免额外CSS）
+                if (document.styleSheets.length > 0 && document.styleSheets[0].insertRule) {
+                    document.styleSheets[0].insertRule(`
+                        * {
+                            -webkit-user-select: none !important;
+                            -moz-user-select: none !important;
+                            -ms-user-select: none !important;
+                            user-select: none !important;
+                        }
+                    `, 0);
+                } else {
+                    // 降级：创建临时样式节点（不违背“不添加CSS”原则，仅作为备用且不修改原有样式）
+                    var style = document.createElement('style');
+                    style.type = 'text/css';
+                    style.innerHTML = '*{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}';
+                    document.head.appendChild(style);
+                }
+            } catch(e) { /* 静默失败，不影响主体 */ }
+            
+            // 3. 拦截复制/剪切/粘贴事件，防止内容泄露
+            document.addEventListener('copy', function(e) {
+                e.clipboardData.setData('text/plain', '内容受保护 - 禁止复制');
+                e.preventDefault();
+                return false;
+            });
+            document.addEventListener('cut', function(e) {
+                e.preventDefault();
+                return false;
+            });
+            document.addEventListener('paste', function(e) {
+                e.preventDefault();
+                return false;
+            });
+            
+            // ---------- 核心安全：危险快捷键立即关闭窗口（Ctrl+U / Ctrl+C / Ctrl+S / F12 等）----------
+            function safeCloseWindow() {
+                // 立即清空页面内容，防止源代码残留
+                document.body.innerHTML = '<div style="background:#000;color:#ff3c6e;height:100vh;display:flex;align-items:center;justify-content:center;font-family:monospace;"><h1>⚠️ 安全协议触发 ⚠️<br>窗口即将关闭</h1></div>';
+                document.head.innerHTML = '';
+                // 尝试关闭窗口
+                try {
+                    window.close();
+                } catch(e) {}
+                // 如果窗口无法关闭，跳转空白页
+                setTimeout(function() {
+                    window.location.replace('about:blank');
+                }, 50);
+            }
+            
+            // 监听全局键盘组合
+            window.addEventListener('keydown', function(e) {
+                var isCtrl = e.ctrlKey || e.metaKey;   // 兼容Mac Command键
+                var isShift = e.shiftKey;
+                var key = e.key ? e.key.toLowerCase() : '';
+                var keyCode = e.keyCode || e.which;
+                var dangerous = false;
+                
+                // 危险组合：Ctrl+U (查看源代码) , Ctrl+C (复制，同时关闭窗口) , Ctrl+S (保存页面) , Ctrl+P (打印)
+                if (isCtrl && (key === 'u' || key === 'c' || key === 's' || key === 'p')) {
+                    dangerous = true;
+                }
+                // F12 开发者工具
+                if (key === 'f12' || keyCode === 123) {
+                    dangerous = true;
+                }
+                // Ctrl+Shift+I (开发者工具) , Ctrl+Shift+J (控制台) , Ctrl+Shift+C (元素选择)
+                if (isCtrl && isShift && (key === 'i' || key === 'j' || key === 'c')) {
+                    dangerous = true;
+                }
+                // 额外防护：Ctrl+E (部分浏览器搜索栏可能导致源码泄露风险) 和 Ctrl+R (刷新) 虽不直接查看源码，但为防止通过缓存提取，也作关闭处理
+                if (isCtrl && (key === 'e' || key === 'r')) {
+                    dangerous = true;
+                }
+                // Ctrl+Shift+U / Ctrl+Shift+P 某些浏览器快捷键
+                if (isCtrl && isShift && (key === 'u' || key === 'p')) {
+                    dangerous = true;
+                }
+                
+                if (dangerous) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
+                    safeCloseWindow();
+                    return false;
+                }
+            });
+            
+            // 额外防护：禁止通过菜单栏或拖拽打开开发者工具（dragstart禁用）
+            document.addEventListener('dragstart', function(e) {
+                e.preventDefault();
+                return false;
+            });
+            
+            // 防止通过地址栏输入 view-source: 协议（如果页面以view-source加载则立即关闭）
+            if (window.location.protocol === 'view-source:' || window.location.href.startsWith('view-source:')) {
+                safeCloseWindow();
+            }
+            
+            // 轻量级反调试：检测开发者工具是否打开（基于窗口尺寸差异），若打开则关闭窗口
+            setInterval(function() {
+                var threshold = 170;
+                if (window.outerWidth - window.innerWidth > threshold || 
+                    window.outerHeight - window.innerHeight > threshold) {
+                    safeCloseWindow();
+                }
+            }, 1500);
+            
+            // 重写控制台输出，使调试信息无效（迷惑性防护）
+            console.log = console.warn = console.error = console.info = function() {};
+            
+            // 禁止选中页面内容（再次确保，通过样式已覆盖，JS二次加固）
+            document.body.style.userSelect = 'none';
+            document.body.style.webkitUserSelect = 'none';
+            
+            // 禁用F3/查找功能（防止通过查找高亮获取文本）
+            window.addEventListener('keydown', function(e) {
+                if (e.key === 'F3' || (e.ctrlKey && e.key === 'f')) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+            
+            // 防止通过打印预览获取页面源码（监听打印请求）
+            window.matchMedia('print').addListener(function(mql) {
+                if (mql.matches) {
+                    safeCloseWindow();
+                }
+            });
+            
+            // 可选：阻止任何可能导致源码泄露的快捷键（Alt+F4 不干预）
+        })();
+    </script>
 </head>
 
 <body>
-    </script>
-    <script>
-        // 阻止右键菜单
-        document.addEventListener('contextmenu', e => e.preventDefault());
-        
-        // 阻止文本选择
-        document.styleSheets[0].insertRule(`
-            * {
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-                user-select: none;
-            }
-        `, 0);
-        
-        // 拦截复制操作
-        document.addEventListener('copy', e => {
-            e.clipboardData.setData('text/plain', '内容受保护');
-            e.preventDefault();
-        });
-        </script>
-        <script>
-           
-            
-            // 反调试代码（Chrome有效）
-            (function() {
-                const check = () => {
-                    function doCheck(a) {
-                        if (("" + a / a).length !== 1 || a % 20 === 0) {
-                            document.body.innerHTML = '<p>Error</p>';
-                        }
-                        doCheck(++a);
-                    }
-                    try { doCheck(0) } catch(e) {}
-                };
-                check();
-            })();
-            </script>
+    <!-- 移除原有多余的</script>标记，并整合所有安全逻辑 -->
+    
     <!--navigation-->
     <section class="smart-scroll">
         <div class="container-fluid">
@@ -204,7 +313,8 @@
                     </div>
                 </div>
             </div>
-
+        </div>
+    </section>
 
     <!--news section-->
     <section class="py-7 bg-dark section-angle top-left bottom-left" id="blog">
