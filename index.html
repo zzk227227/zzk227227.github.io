@@ -2,197 +2,1019 @@
 <html lang="zh-CN">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="zzk" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>张泽凯的网站</title>
-    <meta name="description" content="欢迎来到张泽凯的网站！" />
-
-    <!--Inter UI font-->
+    <meta name="description" content="欢迎来到张泽凯的网站！">
     <link href="https://rsms.me/inter/inter-ui.css" rel="stylesheet">
-<link rel="icon" type="image/svg+xml" href="/logo.png">
-    <!--vendors styles-->
+    <link rel="icon" type="image/svg+xml" href="/logo.png">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/slick-carousel/1.8.1/slick.min.css">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
 
-    <!-- Bootstrap CSS / Color Scheme -->
-    <link rel="stylesheet" href="css/default.css" id="theme-color">
-    <link rel="stylesheet" href="css/fz.css">
-    
-    <!-- 增强安全脚本（移除尺寸检测，避免滚动闪退） -->
+    <style id="theme-color-style">
+        :root {
+            --blue: #2979ff;
+            --indigo: #3d5afe;
+            --purple: #d500f9;
+            --pink: #f50057;
+            --red: #ff1744;
+            --orange: #ff9100;
+            --yellow: #ffea00;
+            --green: #00e676;
+            --teal: #1de9b6;
+            --cyan: #00e5ff;
+            --white: #ffffff;
+            --gray: #607D8B;
+            --gray-dark: #455A64;
+            --primary: #1de9b6;
+            --secondary: #ffffff;
+            --success: #00e676;
+            --info: #00e5ff;
+            --warning: #ffea00;
+            --danger: #ff1744;
+            --light: #ECEFF1;
+            --dark: #11171a;
+            --breakpoint-xs: 0;
+            --breakpoint-sm: 576px;
+            --breakpoint-md: 768px;
+            --breakpoint-lg: 992px;
+            --breakpoint-xl: 1200px;
+            --font-family-sans-serif: "Inter UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-family: sans-serif;
+            line-height: 1.15;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            -ms-overflow-style: scrollbar;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        @-ms-viewport {
+            width: device-width;
+        }
+
+        article,
+        aside,
+        dialog,
+        figcaption,
+        figure,
+        footer,
+        header,
+        hgroup,
+        main,
+        nav,
+        section {
+            display: block;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Inter UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #CFD8DC;
+            text-align: left;
+            background-color: transparent;
+        }
+
+        [tabindex="-1"]:focus {
+            outline: 0 !important;
+        }
+
+        hr {
+            box-sizing: content-box;
+            height: 0;
+            overflow: visible;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            background-color: transparent;
+            -webkit-text-decoration-skip: objects;
+        }
+
+        a:hover {
+            color: #0eb58a;
+            text-decoration: underline;
+        }
+
+        img {
+            vertical-align: middle;
+            border-style: none;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: inherit;
+        }
+
+        label {
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        button {
+            border-radius: 0;
+        }
+
+        button:focus {
+            outline: 1px dotted;
+            outline: 5px auto -webkit-focus-ring-color;
+        }
+
+        input,
+        button,
+        select,
+        optgroup,
+        textarea {
+            margin: 0;
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+        }
+
+        button,
+        input {
+            overflow: visible;
+        }
+
+        button,
+        select {
+            text-transform: none;
+        }
+
+        button,
+        html [type="button"],
+        [type="reset"],
+        [type="submit"] {
+            -webkit-appearance: button;
+        }
+
+        textarea {
+            overflow: auto;
+            resize: vertical;
+        }
+
+        .container {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        @media (min-width: 576px) {
+            .container {
+                max-width: 540px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 720px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .container {
+                max-width: 960px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1140px;
+            }
+        }
+
+        .container-fluid {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+
+        .col-12,
+        .col-md-4,
+        .col-md-6,
+        .col-md-8,
+        .col-sm-2,
+        .col-sm-10 {
+            position: relative;
+            width: 100%;
+            min-height: 1px;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        .col-12 {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+
+        @media (min-width: 576px) {
+            .col-sm-2 {
+                flex: 0 0 16.666667%;
+                max-width: 16.666667%;
+            }
+
+            .col-sm-10 {
+                flex: 0 0 83.333333%;
+                max-width: 83.333333%;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .col-md-4 {
+                flex: 0 0 33.333333%;
+                max-width: 33.333333%;
+            }
+
+            .col-md-6 {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+
+            .col-md-8 {
+                flex: 0 0 66.666667%;
+                max-width: 66.666667%;
+            }
+        }
+
+        .navbar {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem 1rem;
+        }
+
+        .navbar-dark .navbar-brand {
+            color: #ffffff;
+        }
+
+        .navbar-brand {
+            display: inline-block;
+            padding-top: 0.3125rem;
+            padding-bottom: 0.3125rem;
+            margin-right: 1rem;
+            font-size: 1.25rem;
+            line-height: inherit;
+            white-space: nowrap;
+        }
+
+        .navbar-nav {
+            display: flex;
+            flex-direction: column;
+            padding-left: 0;
+            margin-bottom: 0;
+            list-style: none;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 0.5rem 1rem;
+        }
+
+        .navbar-dark .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .navbar-dark .navbar-nav .nav-link:hover,
+        .navbar-dark .navbar-nav .nav-link:focus {
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .navbar-collapse {
+            flex-basis: 100%;
+            flex-grow: 1;
+            align-items: center;
+        }
+
+        .navbar-toggler {
+            padding: 0.25rem 0.75rem;
+            font-size: 1.25rem;
+            line-height: 1;
+            background-color: transparent;
+            border: 1px solid transparent;
+            border-radius: 0.25rem;
+        }
+
+        .navbar-dark .navbar-toggler {
+            color: rgba(255, 255, 255, 0.75);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .collapse:not(.show) {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .navbar-expand-md {
+                flex-flow: row nowrap;
+                justify-content: flex-start;
+            }
+
+            .navbar-expand-md .navbar-nav {
+                flex-direction: row;
+            }
+
+            .navbar-expand-md .navbar-collapse {
+                display: flex !important;
+                flex-basis: auto;
+            }
+
+            .navbar-expand-md .navbar-toggler {
+                display: none;
+            }
+
+            .ml-auto {
+                margin-left: auto !important;
+            }
+        }
+
+        .bg-dark {
+            background-color: rgba(17, 23, 26, 0.85) !important;
+            backdrop-filter: blur(12px);
+        }
+
+        .text-white {
+            color: #fff !important;
+        }
+
+        .text-muted {
+            color: #8b949e !important;
+        }
+
+        .text-center {
+            text-align: center !important;
+        }
+
+        .mx-auto {
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        .my-auto {
+            margin-top: auto !important;
+            margin-bottom: auto !important;
+        }
+
+        .py-3 {
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+        }
+
+        .py-6 {
+            padding-top: 4rem !important;
+            padding-bottom: 4rem !important;
+        }
+
+        .py-7 {
+            padding-top: 5rem !important;
+            padding-bottom: 5rem !important;
+        }
+
+        .pt-2 {
+            padding-top: 0.5rem !important;
+        }
+
+        .pt-3 {
+            padding-top: 1rem !important;
+        }
+
+        .pt-5 {
+            padding-top: 3rem !important;
+        }
+
+        .mt-3 {
+            margin-top: 1rem !important;
+        }
+
+        .mt-5 {
+            margin-top: 3rem !important;
+        }
+
+        .mt-6 {
+            margin-top: 4rem !important;
+        }
+
+        .mb-2 {
+            margin-bottom: 0.5rem !important;
+        }
+
+        .ml-2 {
+            margin-left: 0.5rem !important;
+        }
+
+        .lead {
+            font-size: 1.25rem;
+            font-weight: 300;
+        }
+
+        .small-xl {
+            font-size: 0.85rem;
+        }
+
+        .btn {
+            display: inline-block;
+            font-weight: 600;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            user-select: none;
+            border: 1px solid transparent;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: 0.3rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            color: #11171a;
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: #0eb58a;
+            border-color: #0daa82;
+        }
+
+        .d-inline-flex {
+            display: inline-flex !important;
+        }
+
+        .flex-row {
+            flex-direction: row !important;
+        }
+
+        .align-items-center {
+            align-items: center !important;
+        }
+
+        .card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background: rgba(255, 255, 255, 0.04);
+            background-clip: border-box;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 0.5rem;
+            backdrop-filter: blur(8px);
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        .card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-body {
+            flex: 1 1 auto;
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-text {
+            color: #c9d1d9;
+        }
+
+        /* 卡片容器（改用 flex wrap） */
+        /* 卡片容器（横向弹性排列） */
+        .card-deck {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            /* 居中对齐，避免单张拉伸 */
+        }
+
+        .card-deck .card {
+            flex: 0 0 280px;
+            /* 固定宽度，不再撑满全行 */
+            max-width: 320px;
+            margin: 0 !important;
+        }
+
+        .card-img-top {
+            width: 100%;
+            border-top-left-radius: calc(0.5rem - 1px);
+            border-top-right-radius: calc(0.5rem - 1px);
+        }
+
+        .img-raised {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 移动端两列紧凑布局 */
+        @media (max-width: 768px) {
+            .card-deck {
+                gap: 12px;
+            }
+
+            .card-deck .card {
+                flex: 1 1 45%;
+                min-width: 0;
+            }
+
+            .card .card-body {
+                padding: 1rem 0.8rem;
+            }
+
+            .card .card-title {
+                font-size: 0.9rem;
+                margin-bottom: 0.4rem;
+            }
+
+            .btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .pt-5 {
+                padding-top: 1.5rem !important;
+            }
+        }
+
+        .bg-hero {
+            position: relative;
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+        }
+
+        @media (min-width: 768px) {
+            .vh-md-100 {
+                height: 100vh;
+            }
+
+            .py-md-0 {
+                padding-top: 0 !important;
+                padding-bottom: 0 !important;
+            }
+        }
+
+        .heading-black {
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #f0f6fc;
+        }
+
+        .smart-scroll {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1030;
+            background: rgba(13, 17, 23, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .smart-scroll.scrolling {
+            background: rgba(13, 17, 23, 0.7);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .section-angle {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-angle::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: inherit;
+        }
+
+        .section-angle.top-right::before {
+            top: -40px;
+            transform: skewY(2deg);
+        }
+
+        .section-angle.bottom-right::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -40px;
+            height: 80px;
+            background: inherit;
+            transform: skewY(2deg);
+        }
+
+        .section-angle.top-left::before {
+            top: -40px;
+            transform: skewY(-2deg);
+        }
+
+        .section-angle.bottom-left::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -40px;
+            height: 80px;
+            background: inherit;
+            transform: skewY(-2deg);
+        }
+
+        footer {
+            background: rgba(13, 17, 23, 0.7);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        footer h5 {
+            color: #f0f6fc;
+            margin-bottom: 12px;
+        }
+
+        footer a {
+            display: block;
+            color: #8b949e;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 44px;
+            height: 44px;
+            background: var(--primary);
+            color: #11171a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1040;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            font-size: 20px;
+        }
+
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .switcher-wrap {
+            position: fixed;
+            top: 120px;
+            left: -200px;
+            z-index: 1050;
+            transition: left 0.35s ease;
+        }
+
+        .switcher-wrap.active {
+            left: 0;
+        }
+
+        .switcher-trigger {
+            position: absolute;
+            right: -44px;
+            top: 0;
+            width: 44px;
+            height: 44px;
+            background: var(--primary);
+            color: #11171a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 8px 8px 0;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .color-switcher {
+            background: rgba(22, 27, 34, 0.95);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 18px;
+            width: 200px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .color-switcher h6 {
+            color: #f0f6fc;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .color-switcher ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .color-switcher ul li {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .color-switcher ul li.active {
+            border-color: #fff;
+            box-shadow: 0 0 10px currentColor;
+        }
+
+        .bg-teal {
+            background-color: #1de9b6;
+        }
+
+        .bg-purple {
+            background-color: #d500f9;
+        }
+
+        .bg-blue {
+            background-color: #2979ff;
+        }
+
+        .bg-red {
+            background-color: #ff1744;
+        }
+
+        .bg-green {
+            background-color: #00e676;
+        }
+
+        .bg-indigo {
+            background-color: #3d5afe;
+        }
+
+        .bg-orange {
+            background-color: #ff9100;
+        }
+
+        .bg-cyan {
+            background-color: #00e5ff;
+        }
+
+        .bg-yellow {
+            background-color: #ffea00;
+        }
+
+        .bg-pink {
+            background-color: #f50057;
+        }
+
+        .typing {
+            display: inline-block;
+            border-right: 3px solid var(--primary);
+            animation: blink-caret 0.75s step-end infinite;
+            white-space: nowrap;
+            min-height: 1.2em;
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent;
+            }
+
+            50% {
+                border-color: var(--primary);
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 3px;
+        }
+    </style>
+
+    <style>
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+            background: linear-gradient(45deg, #0c1015, #131a22, #1a1225, #0f1923);
+            background-size: 400% 400%;
+            animation: gradientFlow 20s ease infinite;
+        }
+
+        @keyframes gradientFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        #lightbandCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        #particleCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+
     <script>
-        (function() {
-            // ---------- 基础防护 ----------
-            // 1. 阻止右键菜单
-            document.addEventListener('contextmenu', function(e) {
-                e.preventDefault();
-                return false;
-            });
-            
-            // 2. 阻止文本选择（样式表插入，兼容所有浏览器）
+        (function () {
+            document.addEventListener('contextmenu', function (e) { e.preventDefault(); return false; });
             try {
                 if (document.styleSheets.length > 0 && document.styleSheets[0].insertRule) {
-                    document.styleSheets[0].insertRule(`
-                        * {
-                            -webkit-user-select: none !important;
-                            -moz-user-select: none !important;
-                            -ms-user-select: none !important;
-                            user-select: none !important;
-                        }
-                    `, 0);
+                    document.styleSheets[0].insertRule('* { -webkit-user-select: none !important; -moz-user-select: none !important; -ms-user-select: none !important; user-select: none !important; }', 0);
                 } else {
                     var style = document.createElement('style');
                     style.type = 'text/css';
                     style.innerHTML = '*{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}';
                     document.head.appendChild(style);
                 }
-            } catch(e) { /* 静默失败 */ }
-            
-            // 3. 拦截复制/剪切/粘贴
-            document.addEventListener('copy', function(e) {
-                e.clipboardData.setData('text/plain', '内容受保护 - 禁止复制');
-                e.preventDefault();
-                return false;
-            });
-            document.addEventListener('cut', function(e) {
-                e.preventDefault();
-                return false;
-            });
-            document.addEventListener('paste', function(e) {
-                e.preventDefault();
-                return false;
-            });
-            
-            // ---------- 危险快捷键立即关闭窗口 ----------
+            } catch (e) { }
+            document.addEventListener('copy', function (e) { e.clipboardData.setData('text/plain', '内容受保护 - 禁止复制'); e.preventDefault(); return false; });
+            document.addEventListener('cut', function (e) { e.preventDefault(); return false; });
+            document.addEventListener('paste', function (e) { e.preventDefault(); return false; });
             function safeCloseWindow() {
                 if (window._isClosing) return;
                 window._isClosing = true;
                 document.body.innerHTML = '<div style="background:#000;color:#ff3c6e;height:100vh;display:flex;align-items:center;justify-content:center;font-family:monospace;"><h1>⚠️ 安全协议触发 ⚠️<br>窗口即将关闭</h1></div>';
                 document.head.innerHTML = '';
-                try {
-                    window.close();
-                } catch(e) {}
-                setTimeout(function() {
-                    window.location.replace('about:blank');
-                }, 50);
+                try { window.close(); } catch (e) { }
+                setTimeout(function () { window.location.replace('about:blank'); }, 50);
             }
-            
-            window.addEventListener('keydown', function(e) {
+            window.addEventListener('keydown', function (e) {
                 var isCtrl = e.ctrlKey || e.metaKey;
                 var isShift = e.shiftKey;
                 var key = e.key ? e.key.toLowerCase() : '';
                 var keyCode = e.keyCode || e.which;
                 var dangerous = false;
-                
                 if (isCtrl && (key === 'u' || key === 'c' || key === 's' || key === 'p')) dangerous = true;
                 if (key === 'f12' || keyCode === 123) dangerous = true;
                 if (isCtrl && isShift && (key === 'i' || key === 'j' || key === 'c')) dangerous = true;
                 if (isCtrl && (key === 'e' || key === 'r')) dangerous = true;
                 if (isCtrl && isShift && (key === 'u' || key === 'p')) dangerous = true;
-                
-                if (dangerous) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    e.stopImmediatePropagation();
-                    safeCloseWindow();
-                    return false;
-                }
+                if (dangerous) { e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation(); safeCloseWindow(); return false; }
             });
-            
-            // 禁止拖拽
-            document.addEventListener('dragstart', function(e) {
-                e.preventDefault();
-                return false;
-            });
-            
-            // 防止 view-source 协议
-            if (window.location.protocol === 'view-source:' || window.location.href.startsWith('view-source:')) {
-                safeCloseWindow();
-            }
-            
-            // 禁用控制台输出（干扰调试）
-            console.log = console.warn = console.error = console.info = function() {};
-            
-            // 禁止选中
+            document.addEventListener('dragstart', function (e) { e.preventDefault(); return false; });
+            if (window.location.protocol === 'view-source:' || window.location.href.startsWith('view-source:')) { safeCloseWindow(); }
+            console.log = console.warn = console.error = console.info = function () { };
             document.body.style.userSelect = 'none';
             document.body.style.webkitUserSelect = 'none';
-            
-            // 禁用 F3 / Ctrl+F 查找
-            window.addEventListener('keydown', function(e) {
-                if (e.key === 'F3' || (e.ctrlKey && e.key === 'f')) {
-                    e.preventDefault();
-                    return false;
-                }
-            });
-            
-            // 禁止打印预览
-            window.matchMedia('print').addListener(function(mql) {
-                if (mql.matches) safeCloseWindow();
-            });
+            window.addEventListener('keydown', function (e) { if (e.key === 'F3' || (e.ctrlKey && e.key === 'f')) { e.preventDefault(); return false; } });
+            window.matchMedia('print').addListener(function (mql) { if (mql.matches) safeCloseWindow(); });
         })();
     </script>
 </head>
 
 <body>
-    <!--navigation-->
+    <div class="gradient-bg"></div>
+    <canvas id="lightbandCanvas"></canvas>
+    <canvas id="particleCanvas"></canvas>
+
     <section class="smart-scroll">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-md navbar-dark">
-                <a class="navbar-brand heading-black" href="#">
-                    ZZK
-                </a>
+                <a class="navbar-brand heading-black" href="#">ZZK</a>
                 <div class="bfw-s-hide banner bfw-height-half bfw-over-hide bfw-width-per bfw-pos-rel"
                     style="color: #2596cc;"></div>
                 <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse"
                     data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
                     aria-label="Toggle navigation">
-                    <span data-feather="grid"></span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-grid">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link page-scroll" href="#pricing">下载</a>
-                        </li>
-                        
-                        <li class="nav-item">
-                            <a class="nav-link page-scroll" href="/browser">浏览器</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link page-scroll" href="https://zzk227227.github.io/yx">游戏盒子</a>
-                        </li>
-                          <li class="nav-item">
-                            <a class="nav-link page-scroll" href="https://zzk227227.github.io/PCL">PCL(MC)</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link page-scroll" href="https://zzk227227.github.io/easy">快捷链接</a>
-                        </li>
-                          <li class="nav-item">
-                            <a class="nav-link page-scroll" href="#blog">博客</a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link page-scroll" href="#pricing">下载</a></li>
+                        <li class="nav-item"><a class="nav-link page-scroll" href="/browser">浏览器</a></li>
+                        <li class="nav-item"><a class="nav-link page-scroll"
+                                href="https://zzk227227.github.io/yx">游戏盒子</a></li>
+                        <li class="nav-item"><a class="nav-link page-scroll"
+                                href="https://zzk227227.github.io/PCL">PCL(MC)</a></li>
+                        <li class="nav-item"><a class="nav-link page-scroll"
+                                href="https://zzk227227.github.io/easy">快捷链接</a></li>
+                        <li class="nav-item"><a class="nav-link page-scroll" href="#blog">博客</a></li>
                     </ul>
                 </div>
             </nav>
         </div>
     </section>
 
-    <!--hero header-->
     <section class="py-7 py-md-0 bg-hero" id="home">
         <div class="container">
             <div class="row vh-md-100">
                 <div class="col-md-8 col-sm-10 col-12 mx-auto my-auto text-center">
-                    <h1 class="typing">欢迎大家来到张泽凯的网站！</h1>
+                    <h1 class="typing" id="typingText"></h1>
                     <p class="lead py-3">这里我收集了许多有用的应用，其中部分自制，报毒可正常运行。</p>
-<button class="btn btn-primary d-inline-flex flex-row align-items-center" onclick="window.location.href='https://zzk227227.github.io/yx'">
-    继续
-    <em class="ml-2" data-feather="arrow-right"></em>
-</button>
+                    <button class="btn btn-primary d-inline-flex flex-row align-items-center"
+                        onclick="window.location.href='https://zzk227227.github.io/yx'">
+                        继续
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-arrow-right ml-2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!--pricing section-->
     <section class="py-7 bg-dark section-angle top-right bottom-right" id="pricing">
         <div class="container">
             <div class="row">
@@ -203,44 +1025,44 @@
             <div class="row pt-5 pricing-table">
                 <div class="col-12 mx-auto">
                     <div class="card-deck pricing-table">
-                        <div class="card">
+                        <div class="card tilt-card">
                             <div class="card-body">
-                                <h6 class="card-title pt-3">贪吃蛇大作战（自制）</h6>
-                                <a href="https://easylink.cc/6jqwrx" class="btn btn-primary">立即下载</a>
-                                <h6 class="card-title pt-3">PhpStorm9（PHP编辑器）</h6>
-                                <a href="https://easylink.cc/s9kmwh" class="btn btn-primary">立即下载</a>
-                                <h6 class="card-title pt-3">哈利波特与凤凰社（自制）</h6>
-                                <a href="https://easylink.cc/bysn8y" class="btn btn-primary">立即下载</a>
+                                <h6 class="card-title pt-2">贪吃蛇大作战（自制）</h6>
+                                <a href="https://easylink.cc/6jqwrx" class="btn btn-primary btn-sm">立即下载</a>
+                                <h6 class="card-title pt-2">PhpStorm9（PHP编辑器）</h6>
+                                <a href="https://easylink.cc/s9kmwh" class="btn btn-primary btn-sm">立即下载</a>
+                                <h6 class="card-title pt-2">哈利波特与凤凰社（自制）</h6>
+                                <a href="https://easylink.cc/bysn8y" class="btn btn-primary btn-sm">立即下载</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card tilt-card">
                             <div class="card-body">
-                                <h4 class="card-title pt-3">Visual Studio</h4>
-                                <a href="https://easylink.cc/k77grq" class="btn btn-primary">立即下载</a>
-                                <h4 class="card-title pt-3">james（网络勘察）</h4>
-                                <a href="https://easylink.cc/iem1gc" class="btn btn-primary">立即下载</a>
-                                <h4 class="card-title pt-3">谷歌浏览器</h4>
-                                <a href="https://easylink.cc/ktdta1" class="btn btn-primary">立即下载</a>
+                                <h4 class="card-title pt-2">Visual Studio</h4>
+                                <a href="https://easylink.cc/k77grq" class="btn btn-primary btn-sm">立即下载</a>
+                                <h4 class="card-title pt-2">james（网络勘察）</h4>
+                                <a href="https://easylink.cc/iem1gc" class="btn btn-primary btn-sm">立即下载</a>
+                                <h4 class="card-title pt-2">谷歌浏览器</h4>
+                                <a href="https://easylink.cc/ktdta1" class="btn btn-primary btn-sm">立即下载</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card tilt-card">
                             <div class="card-body">
-                                <h4 class="card-title pt-3">星球大战（自制）</h4>
-                                <a href="https://easylink.cc/v8zjqr" class="btn btn-primary">立即下载</a>
-                                <h5 class="card-title pt-3">python 3.10.4</h5>
-                                <a href="https://easylink.cc/bkqbln" class="btn btn-primary">立即下载</a>
-                                <h4 class="card-title pt-3">我的世界（自制）</h4>
-                                <a href="https://easylink.cc/8g3j9o" class="btn btn-primary">立即下载</a>
+                                <h4 class="card-title pt-2">星球大战（自制）</h4>
+                                <a href="https://easylink.cc/v8zjqr" class="btn btn-primary btn-sm">立即下载</a>
+                                <h5 class="card-title pt-2">python 3.10.4</h5>
+                                <a href="https://easylink.cc/bkqbln" class="btn btn-primary btn-sm">立即下载</a>
+                                <h4 class="card-title pt-2">我的世界（自制）</h4>
+                                <a href="https://easylink.cc/8g3j9o" class="btn btn-primary btn-sm">立即下载</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card tilt-card">
                             <div class="card-body">
-                                <h6 class="card-title pt-3">Wireshark（网络抓包）</h6>
-                                <a href="https://easylink.cc/koq46i" class="btn btn-primary">立即下载</a>
-                                <h4 class="card-title pt-3">firefox浏览器</h4>
-                                <a href="https://easylink.cc/faej2n" class="btn btn-primary">立即下载</a>
-                                <h5 class="card-title pt-3">sublime_text</h5>
-                                <a href="https://easylink.cc/5swqri" class="btn btn-primary">立即下载</a>
+                                <h6 class="card-title pt-2">Wireshark（网络抓包）</h6>
+                                <a href="https://easylink.cc/koq46i" class="btn btn-primary btn-sm">立即下载</a>
+                                <h4 class="card-title pt-2">firefox浏览器</h4>
+                                <a href="https://easylink.cc/faej2n" class="btn btn-primary btn-sm">立即下载</a>
+                                <h5 class="card-title pt-2">sublime_text</h5>
+                                <a href="https://easylink.cc/5swqri" class="btn btn-primary btn-sm">立即下载</a>
                             </div>
                         </div>
                     </div>
@@ -249,7 +1071,6 @@
         </div>
     </section>
 
-    <!--news section-->
     <section class="py-7 bg-dark section-angle top-left bottom-left" id="blog">
         <div class="container">
             <div class="row">
@@ -259,10 +1080,8 @@
             </div>
             <div class="row mt-5">
                 <div class="col-md-4">
-                    <div class="card">
-                        <a href="#">
-                            <img class="card-img-top img-raised" src="img/pi.png" alt="Blog 1">
-                        </a>
+                    <div class="card tilt-card">
+                        <a href="#"><img class="card-img-top img-raised" src="img/pi.png" alt="Blog 1"></a>
                         <div class="card-body">
                             <a href="#" class="card-title mb-2">
                                 <h5>树莓派系统烧录和故障排查</h5>
@@ -275,10 +1094,8 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card">
-                        <a href="#">
-                            <img class="card-img-top img-raised" src="img/yy.png" alt="Blog 2">
-                        </a>
+                    <div class="card tilt-card">
+                        <a href="#"><img class="card-img-top img-raised" src="img/yy.png" alt="Blog 2"></a>
                         <div class="card-body">
                             <a href="#" class="card-title mb-2">
                                 <h5>如何在kali linux里安装微信？</h5>
@@ -291,10 +1108,8 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card">
-                        <a href="#">
-                            <img class="card-img-top img-raised" src="img/py.png" alt="Blog 3">
-                        </a>
+                    <div class="card tilt-card">
+                        <a href="#"><img class="card-img-top img-raised" src="img/py.png" alt="Blog 3"></a>
                         <div class="card-body">
                             <a href="#" class="card-title mb-2">
                                 <h5>Python简单的爬虫。</h5>
@@ -308,12 +1123,10 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-6">
-            </div>
+            <div class="row mt-6"></div>
         </div>
     </section>
 
-    <!--footer-->
     <footer class="py-6" id="me">
         <div class="container">
             <div class="row">
@@ -332,16 +1145,10 @@
         </div>
     </footer>
 
-    <!--scroll to top-->
-    <div class="scroll-top">
-        <i class="fa fa-angle-up" aria-hidden="true"></i>
-    </div>
+    <div class="scroll-top"><i class="fa fa-angle-up" aria-hidden="true"></i></div>
 
-    <!-- theme switcher (FOR DEMO ONLY - REMOVE FROM PRODUCTION)-->
     <div class="switcher-wrap">
-        <div class="switcher-trigger">
-            <span class="fa fa-gear"></span>
-        </div>
+        <div class="switcher-trigger"><span class="fa fa-gear"></span></div>
         <div class="color-switcher">
             <h6>颜色自定义</h6>
             <ul class="mt-3 clearfix">
@@ -359,13 +1166,298 @@
         </div>
     </div>
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/feather-icons/4.7.3/feather.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-    <script src="js/scripts.js"></script>
+
+    <script>
+        $(function () {
+            feather.replace();
+            $('[data-toggle="tooltip"]').tooltip();
+            $('[data-toggle="popover"]').popover();
+
+            $('a.page-scroll').bind('click', function (event) {
+                var $anchor = $(this);
+                $('html, body').stop().animate({ scrollTop: $($anchor.attr('href')).offset().top - 20 }, 1000);
+                event.preventDefault();
+            });
+
+            $('.slick-about').slick({ slidesToShow: 1, slidesToScroll: 1, autoplay: true, autoplaySpeed: 3000, dots: true, arrows: false });
+
+            var scrollTop = 0;
+            $(window).scroll(function () {
+                var scroll = $(window).scrollTop();
+                if (scroll > 80) {
+                    if (scroll > scrollTop) { $('.smart-scroll').addClass('scrolling').removeClass('up'); }
+                    else { $('.smart-scroll').addClass('up'); }
+                } else { $('.smart-scroll').removeClass('scrolling').removeClass('up'); }
+                scrollTop = scroll;
+                if (scroll >= 600) { $('.scroll-top').addClass('active'); }
+                else { $('.scroll-top').removeClass('active'); }
+                return false;
+            });
+
+            $('.scroll-top').click(function () { $('html, body').stop().animate({ scrollTop: 0 }, 1000); });
+
+            $('.switcher-trigger').click(function () { $('.switcher-wrap').toggleClass('active'); });
+            $('.color-switcher ul li').click(function () {
+                var color = $(this).attr('data-color');
+                var primaryColors = {
+                    'default': '#1de9b6', 'purple': '#d500f9', 'blue': '#2979ff',
+                    'red': '#ff1744', 'green': '#00e676', 'indigo': '#3d5afe',
+                    'orange': '#ff9100', 'cyan': '#00e5ff', 'yellow': '#ffea00', 'pink': '#f50057'
+                };
+                document.documentElement.style.setProperty('--primary', primaryColors[color] || '#1de9b6');
+                $('.color-switcher ul li').removeClass('active');
+                $(this).addClass('active');
+            });
+
+            // ======= 稳定的 JS 打字效果 =======
+            var text = "欢迎大家来到张泽凯的网站！";
+            var target = document.getElementById('typingText');
+            var index = 0;
+            var speed = 120; // 毫秒/字符
+
+            function typeWriter() {
+                if (target && index < text.length) {
+                    target.textContent += text.charAt(index);
+                    index++;
+                    setTimeout(typeWriter, speed);
+                }
+            }
+            // 启动打字
+            setTimeout(typeWriter, 300);
+        });
+
+        // 卡片 3D 倾斜
+        (function () {
+            var cards = document.querySelectorAll('.tilt-card');
+            if (!cards.length || window.matchMedia('(max-width: 768px)').matches) return;
+
+            function tiltHandler(e) {
+                var card = this;
+                var rect = card.getBoundingClientRect();
+                var x = e.clientX - rect.left;
+                var y = e.clientY - rect.top;
+                var centerX = rect.width / 2;
+                var centerY = rect.height / 2;
+                var rotateX = (y - centerY) / 10;
+                var rotateY = (centerX - x) / 10;
+                card.style.transform = 'perspective(800px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) scale(1.02)';
+                card.style.boxShadow = (rotateY * -1) + 'px ' + rotateX + 'px 30px rgba(0,0,0,0.5)';
+            }
+
+            function resetTilt() {
+                this.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)';
+                this.style.boxShadow = '';
+            }
+
+            cards.forEach(function (card) {
+                card.addEventListener('mousemove', tiltHandler);
+                card.addEventListener('mouseleave', resetTilt);
+            });
+        })();
+
+        // 粒子 + 光带（定时消除）
+        (function () {
+            var particleCanvas = document.getElementById('particleCanvas');
+            var pCtx = particleCanvas.getContext('2d');
+            var lightbandCanvas = document.getElementById('lightbandCanvas');
+            var lbCtx = lightbandCanvas.getContext('2d');
+            var width, height;
+            var PARTICLE_COUNT = 70;
+            var MOUSE_INFLUENCE_RADIUS = 120;
+            var LINK_DISTANCE = 110;
+            var particles = [];
+            var ripples = [];
+            var trailPoints = [];
+            var MAX_TRAIL = 16;
+            var mouse = { x: null, y: null, isActive: false };
+
+            var Particle = function () {
+                this.reset = function () {
+                    var edge = Math.floor(Math.random() * 4);
+                    if (edge === 0) { this.x = Math.random() * width; this.y = -10; }
+                    else if (edge === 1) { this.x = width + 10; this.y = Math.random() * height; }
+                    else if (edge === 2) { this.x = Math.random() * width; this.y = height + 10; }
+                    else { this.x = -10; this.y = Math.random() * height; }
+                    this.radius = Math.random() * 1.8 + 0.6;
+                    var angle = Math.atan2(height / 2 - this.y, width / 2 - this.x);
+                    this.vx = Math.cos(angle) * (Math.random() * 0.45 + 0.08);
+                    this.vy = Math.sin(angle) * (Math.random() * 0.45 + 0.08);
+                    this.opacity = Math.random() * 0.55 + 0.15;
+                };
+                this.update = function () {
+                    this.x += this.vx; this.y += this.vy;
+                    if (mouse.isActive) {
+                        var dx = mouse.x - this.x, dy = mouse.y - this.y;
+                        var dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < MOUSE_INFLUENCE_RADIUS) {
+                            var force = (MOUSE_INFLUENCE_RADIUS - dist) / MOUSE_INFLUENCE_RADIUS;
+                            var a = Math.atan2(dy, dx);
+                            this.vx -= Math.cos(a) * force * 0.14;
+                            this.vy -= Math.sin(a) * force * 0.14;
+                            this.opacity = Math.min(0.85, this.opacity + 0.018);
+                        }
+                    }
+                    this.vx *= 0.99; this.vy *= 0.99;
+                    var speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+                    if (speed > 1.0) { this.vx = (this.vx / speed) * 1.0; this.vy = (this.vy / speed) * 1.0; }
+                    if (this.x < -50 || this.x > width + 50 || this.y < -50 || this.y > height + 50) { this.reset(); }
+                    this.opacity = Math.max(0.04, this.opacity - 0.0008);
+                };
+                this.draw = function (ctx) {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(130, 180, 255, ' + this.opacity + ')';
+                    ctx.fill();
+                };
+                this.reset();
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+            };
+
+            var Ripple = function (x, y) {
+                this.x = x; this.y = y; this.radius = 0; this.maxRadius = 70 + Math.random() * 40;
+                this.speed = 2; this.opacity = 0.5; this.lineWidth = 1.4;
+                this.update = function () {
+                    this.radius += this.speed; this.opacity -= 0.008; this.lineWidth *= 0.98;
+                    return this.radius < this.maxRadius && this.opacity > 0;
+                };
+                this.draw = function (ctx) {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.strokeStyle = 'rgba(120, 180, 255, ' + this.opacity + ')';
+                    ctx.lineWidth = this.lineWidth;
+                    ctx.stroke();
+                };
+            };
+
+            function updateTrail(e) {
+                trailPoints.push({ x: e.clientX, y: e.clientY, age: 0 });
+                if (trailPoints.length > MAX_TRAIL) trailPoints.shift();
+                for (var i = 0; i < trailPoints.length; i++) trailPoints[i].age += 1;
+                trailPoints = trailPoints.filter(function (p) { return p.age < MAX_TRAIL * 0.75; });
+            }
+            function drawTrail(ctx) {
+                for (var i = 0; i < trailPoints.length; i++) {
+                    var p = trailPoints[i];
+                    var alpha = 1 - p.age / (MAX_TRAIL * 0.75);
+                    var radius = 2.2 * (1 - p.age / (MAX_TRAIL * 0.75)) + 0.4;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(200, 220, 255, ' + (alpha * 0.6) + ')';
+                    ctx.fill();
+                }
+            }
+
+            function drawLinks(particles, ctx) {
+                for (var i = 0; i < particles.length; i++) {
+                    for (var j = i + 1; j < particles.length; j++) {
+                        var p1 = particles[i], p2 = particles[j];
+                        var dx = p1.x - p2.x, dy = p1.y - p2.y;
+                        var dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < LINK_DISTANCE) {
+                            var alpha = (1 - dist / LINK_DISTANCE) * 0.12;
+                            ctx.beginPath();
+                            ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y);
+                            ctx.strokeStyle = 'rgba(200, 220, 255, ' + alpha + ')';
+                            ctx.lineWidth = 0.4;
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            var LightBand = function () {
+                this.reset = function () {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.length = 130 + Math.random() * 220;
+                    this.angle = Math.random() * Math.PI * 2;
+                    this.speed = 0.25 + Math.random() * 0.6;
+                    this.opacity = 0.025 + Math.random() * 0.04;
+                    this.width = 30 + Math.random() * 60;
+                    this.age = 0;
+                    this.maxAge = 300 + Math.floor(Math.random() * 300);
+                };
+                this.update = function () {
+                    this.age++;
+                    if (this.age >= this.maxAge) {
+                        this.reset();
+                        return;
+                    }
+                    this.x += Math.cos(this.angle) * this.speed;
+                    this.y += Math.sin(this.angle) * this.speed;
+                    if (this.x < -300 || this.x > width + 300 || this.y < -300 || this.y > height + 300) {
+                        this.reset();
+                    }
+                };
+                this.draw = function (ctx) {
+                    ctx.save();
+                    ctx.translate(this.x, this.y);
+                    ctx.rotate(this.angle);
+                    var grad = ctx.createLinearGradient(-this.length / 2, 0, this.length / 2, 0);
+                    grad.addColorStop(0, 'rgba(80, 150, 255, 0)');
+                    grad.addColorStop(0.5, 'rgba(100, 170, 255, ' + this.opacity + ')');
+                    grad.addColorStop(1, 'rgba(80, 150, 255, 0)');
+                    ctx.fillStyle = grad;
+                    ctx.fillRect(-this.length / 2, -this.width / 2, this.length, this.width);
+                    ctx.restore();
+                };
+                this.reset();
+            };
+
+            var lightBands = [];
+            for (var i = 0; i < 5; i++) lightBands.push(new LightBand());
+
+            function drawLightBands() {
+                lbCtx.clearRect(0, 0, width, height);
+                for (var i = 0; i < lightBands.length; i++) { lightBands[i].update(); lightBands[i].draw(lbCtx); }
+            }
+
+            function animate() {
+                drawLightBands();
+                pCtx.clearRect(0, 0, width, height);
+                drawLinks(particles, pCtx);
+                for (var i = 0; i < particles.length; i++) { particles[i].update(); particles[i].draw(pCtx); }
+                ripples = ripples.filter(function (r) { var alive = r.update(); if (alive) r.draw(pCtx); return alive; });
+                drawTrail(pCtx);
+                requestAnimationFrame(animate);
+            }
+
+            function onResize() {
+                width = window.innerWidth; height = window.innerHeight;
+                particleCanvas.width = width; particleCanvas.height = height;
+                lightbandCanvas.width = width; lightbandCanvas.height = height;
+                particles = [];
+                for (var i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
+                for (var i = 0; i < lightBands.length; i++) lightBands[i].reset();
+                ripples = []; trailPoints = [];
+            }
+
+            window.addEventListener('resize', onResize);
+            window.addEventListener('mousemove', function (e) {
+                mouse.x = e.clientX; mouse.y = e.clientY; mouse.isActive = true;
+                updateTrail(e);
+            });
+            window.addEventListener('mouseleave', function () { mouse.isActive = false; trailPoints = []; });
+            window.addEventListener('click', function (e) { ripples.push(new Ripple(e.clientX, e.clientY)); });
+            window.addEventListener('touchmove', function (e) {
+                e.preventDefault();
+                var t = e.touches[0];
+                mouse.x = t.clientX; mouse.y = t.clientY; mouse.isActive = true;
+                updateTrail({ clientX: t.clientX, clientY: t.clientY });
+            }, { passive: false });
+            window.addEventListener('touchend', function () { mouse.isActive = false; trailPoints = []; });
+            window.addEventListener('touchstart', function (e) { var t = e.touches[0]; ripples.push(new Ripple(t.clientX, t.clientY)); });
+
+            onResize();
+            animate();
+        })();
+    </script>
 </body>
 
 </html>
