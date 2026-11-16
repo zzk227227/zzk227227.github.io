@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>青柠浏览器</title>
+<meta name="description" content="青柠浏览器：基于 Edge WebView2 内核的 Windows 桌面浏览器，支持 H.264 视频、暗色无边框界面、置顶与崩溃守护。">
+<style>
+  :root{
+    --bg:#0e0e0e;
+    --surface:#161616;
+    --surface-2:#1c1c1c;
+    --border:#262626;
+    --text:#eaeaea;
+    --muted:#9aa0a6;
+    --accent:#3ecf8e;
+    --accent-dark:#2f9e6b;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Segoe UI","Microsoft YaHei",system-ui,-apple-system,Arial,sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+
+  /* 顶部导航 */
+  header{
+    position:sticky;top:0;z-index:20;
+    background:rgba(14,14,14,.85);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:17px}
+  .brand img{width:28px;height:28px;border-radius:8px}
+  .nav-links{display:flex;gap:26px;font-size:14px;color:var(--muted)}
+  .nav-links a:hover{color:var(--text)}
+  .nav-cta{
+    font-size:14px;padding:8px 16px;border-radius:8px;
+    background:var(--accent);color:#062b1b;font-weight:600;
+  }
+  .nav-cta:hover{background:#4fe3a0}
+
+  /* 首屏 */
+  .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding:88px 0 72px}
+  .badge{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;color:var(--accent);
+    border:1px solid rgba(62,207,142,.35);
+    background:rgba(62,207,142,.08);
+    padding:5px 12px;border-radius:999px;margin-bottom:22px;
+  }
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+  h1{font-size:52px;line-height:1.15;letter-spacing:-.5px;margin-bottom:18px}
+  h1 span{color:var(--accent)}
+  .lead{font-size:17px;color:var(--muted);max-width:520px;margin-bottom:30px}
+  .actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:13px 26px;border-radius:10px;font-weight:600;font-size:15px;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn-primary{background:var(--accent);color:#062b1b}
+  .btn-primary:hover{background:#4fe3a0}
+  .btn-ghost{border:1px solid var(--border);background:var(--surface);color:var(--text)}
+  .btn-ghost:hover{background:var(--surface-2)}
+  .meta-line{margin-top:22px;font-size:13px;color:#7c8288}
+
+  .hero-art{display:flex;justify-content:center;position:relative}
+  .hero-art::before{
+    content:"";position:absolute;inset:0;margin:auto;width:320px;height:320px;
+    background:radial-gradient(circle, rgba(62,207,142,.22), transparent 65%);
+    filter:blur(10px);
+  }
+  .hero-art img{width:280px;height:280px;position:relative;filter:drop-shadow(0 28px 60px rgba(0,0,0,.6))}
+
+  /* 截图 */
+  .shot{padding:10px 0 80px}
+  .window{
+    border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;
+    background:var(--surface);box-shadow:0 30px 80px rgba(0,0,0,.55);
+  }
+  .window-bar{
+    display:flex;align-items:center;gap:8px;
+    padding:10px 14px;background:#141414;border-bottom:1px solid var(--border);
+  }
+  .window-bar i{width:11px;height:11px;border-radius:50%;background:#2c2c2c;display:inline-block}
+  .window-bar i:nth-child(1){background:#e05c5c}
+  .window-bar i:nth-child(2){background:#e0b45c}
+  .window-bar i:nth-child(3){background:#3ecf8e}
+  .window-bar span{margin-left:10px;font-size:12px;color:#7c8288}
+  .window img{display:block;width:100%;height:auto}
+
+  /* 通用区块 */
+  section{padding:72px 0}
+  .section-head{max-width:620px;margin-bottom:44px}
+  .section-head h2{font-size:32px;margin-bottom:12px;letter-spacing:-.3px}
+  .section-head p{color:var(--muted);font-size:15px}
+
+  /* 功能卡片 */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    padding:26px 24px;transition:border-color .2s ease, transform .2s ease;
+  }
+  .card:hover{border-color:rgba(62,207,142,.45);transform:translateY(-2px)}
+  .card .ico{
+    width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+    background:rgba(62,207,142,.12);color:var(--accent);margin-bottom:18px;font-size:18px;
+  }
+  .card h3{font-size:16px;margin-bottom:8px}
+  .card p{font-size:14px;color:var(--muted)}
+
+  /* 下载 */
+  .download{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:44px}
+  .download-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
+  .download h2{font-size:28px;margin-bottom:10px}
+  .download .sub{color:var(--muted);font-size:15px;margin-bottom:26px}
+  .specs{list-style:none;font-size:14px;color:var(--muted)}
+  .specs li{display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed #222}
+  .specs li:last-child{border-bottom:0}
+  .specs b{color:var(--text);font-weight:600;min-width:88px}
+  .filebox{
+    background:#121212;border:1px solid #2a2a2a;border-radius:12px;padding:22px;
+  }
+  .filebox .name{font-size:15px;font-weight:600;word-break:break-all}
+  .filebox .fact{font-size:13px;color:var(--muted);margin:6px 0 18px}
+  .filebox .btn{width:100%;justify-content:center}
+
+  /* 更新日志 */
+  .log{list-style:none;border-left:2px solid #262626;margin-left:8px}
+  .log li{position:relative;padding:0 0 26px 26px}
+  .log li::before{
+    content:"";position:absolute;left:-6px;top:7px;width:10px;height:10px;border-radius:50%;
+    background:var(--accent);box-shadow:0 0 0 4px rgba(62,207,142,.15);
+  }
+  .log time{font-size:12px;color:#7c8288;display:block;margin-bottom:4px}
+  .log b{font-size:15px}
+  .log p{color:var(--muted);font-size:14px;margin-top:4px}
+
+  footer{border-top:1px solid var(--border);padding:34px 0 50px;color:#6f757b;font-size:13px}
+  .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+  @media (max-width:860px){
+    .hero{grid-template-columns:1fr;padding:56px 0 40px;gap:36px}
+    .hero-art{order:-1}
+    .hero-art img{width:200px;height:200px}
+    h1{font-size:38px}
+    .grid{grid-template-columns:1fr 1fr}
+    .download{padding:28px}
+    .download-grid{grid-template-columns:1fr}
+    .nav-links{display:none}
+  }
+  @media (max-width:560px){
+    .grid{grid-template-columns:1fr}
+    h1{font-size:32px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <img src="assets/icon-256.png" alt="青柠浏览器">
+      青柠浏览器
+    </a>
+    <nav class="nav-links">
+      <a href="#features">功能</a>
+      <a href="#download">下载</a>
+      <a href="#changelog">更新日志</a>
+    </nav>
+    <a class="nav-cta" href="#download">下载</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+    <section class="hero">
+      <div>
+        <div class="badge"><span class="dot"></span> v2.0 · Windows 10 / 11 64 位</div>
+        <h1><span>青柠浏览器</span></h1>
+        <p class="lead">
+          基于 Edge WebView2 内核，H.264 / AAC 视频直接播；暗色无边框界面、窗口置顶、
+          崩溃自动恢复。
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#download">⬇ 下载安装包</a>
+          <a class="btn btn-ghost" href="#features">功能</a>
+        </div>
+        <p class="meta-line">安装包 55.4 MB · 支持 Win10/11 64 位 · 自动创建桌面快捷方式</p>
+      </div>
+      <div class="hero-art">
+        <img src="assets/icon-256.png" alt="青柠浏览器图标">
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap shot">
+    <div class="window">
+      <div class="window-bar">
+        <i></i><i></i><i></i>
+        <span>MCJS 1.8.8 WASM — 青柠浏览器</span>
+      </div>
+      <img src="assets/screenshot.jpg" alt="青柠浏览器运行 MCJS 网页游戏">
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section id="features">
+      <div class="section-head">
+        <h2>特点</h2>
+        <p>一个专注、干净、够用的桌面浏览器，针对“上课偷玩”做了专门优化。</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="ico">▶</div>
+          <h3>完整视频解码</h3>
+          <p>Edge WebView2 内核自带 H.264 / AAC，抖音、B 站这类站点也能直接播放，不再黑屏。</p>
+        </div>
+        <div class="card">
+          <div class="ico">◐</div>
+          <h3>暗色无边框界面</h3>
+          <p>圆角窗口、可拖拽标题栏、深浅一致的暗色配色，标题栏和地址栏不再有白边。</p>
+        </div>
+        <div class="card">
+          <div class="ico">📌</div>
+          <h3>默认置顶</h3>
+          <p>每次启动自动保持在最前，不抢输入焦点；随时可一键取消置顶。</p>
+        </div>
+        <div class="card">
+          <div class="ico">🛡</div>
+          <h3>误关 / 崩溃守护</h3>
+          <p>独立守护进程：崩溃或被关掉会自动拉起；正常关闭则一起退出。</p>
+        </div>
+        <div class="card">
+          <div class="ico">🗂</div>
+          <h3>页面日志落盘</h3>
+          <p>网页控制台输出与页面事件写入 superlog.dat，出问题可直接查看。</p>
+        </div>
+        <div class="card">
+          <div class="ico">⤓</div>
+          <h3>下载与记忆</h3>
+          <p>文件自动存到“下载”目录；窗口大小、缩放、上次网址都会记住。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="download">
+      <div class="download">
+        <div class="download-grid">
+          <div>
+            <h2>下载青柠浏览器</h2>
+            <p class="sub">一个安装包，装完即用，不需要另外配置 Python 环境。</p>
+            <ul class="specs">
+              <li><b>系统</b> Windows 10 / 11 64 位</li>
+              <li><b>依赖</b> Edge WebView2 运行时（Win11 自带，Win10 通常已随 Edge 安装）</li>
+              <li><b>磁盘</b> 约 200 MB（安装后）</li>
+              <li><b>安装位置</b> C:\MCJS（固定路径，保证组件正常加载）</li>
+              <li><b>卸载</b> 设置 → 应用 → 青柠浏览器</li>
+            </ul>
+          </div>
+          <div class="filebox">
+            <div class="name">Lime_Browser_Setup_2.0.exe</div>
+            <div class="fact">版本 2.0 · 55.4 MB · 更新于 2026-11-16</div>
+            <!-- 把安装包放在本页面同目录即可直接下载；也可改成网盘/对象存储地址 -->
+            <a class="btn btn-primary" href="https://easylink.cc/2pepbq" download>⬇ 立即下载</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="changelog">
+      <div class="section-head">
+        <h2>更新日志</h2>
+      </div>
+      <ul class="log">
+        <li>
+          <time>2026-11-16 · v2.0</time>
+          <b>内核更新为 Edge WebView2</b>
+          <p>解决 H.264/AAC 视频无法播放；修复地址栏焦点被网页抢走、边缘缩放失效、启动不置顶；新增页面日志 superlog.dat 与按钮/快捷键。</p>
+        </li>
+        <li>
+          <time>2026-11-15 · v2.0</time>
+          <b>守护进程与界面重做</b>
+          <p>去掉服务注册与无限重启，加入退避与卡死恢复；暗色圆角界面、统一下载与托盘提示；浏览器正常关闭后守护进程一起退出。</p>
+        </li>
+        <li>
+          <time>2026-11-14 · v1.5</time>
+          <b>首个可用版本</b>
+          <p>无边框窗口、地址栏、托盘、保护程序、单实例、网址记忆。</p>
+        </li>
+      </ul>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 青柠浏览器 · 仅供测试使用 · Made By 张泽凯</span>
+    <span>Windows 10/11 · Edge WebView2 · 由 Python + Inno Setup 构建</span>
+  </div>
+</footer>
+
+</body>
+</html>
