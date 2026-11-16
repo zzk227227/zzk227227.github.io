@@ -7,7 +7,7 @@
     <title>张泽凯的网站</title>
     <meta name="description" content="欢迎来到张泽凯的网站！">
     <link href="https://rsms.me/inter/inter-ui.css" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="/logo.png">
+    <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/slick-carousel/1.8.1/slick.min.css">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
@@ -478,8 +478,12 @@
         }
 
         .btn-primary:hover {
-            background-color: #0eb58a;
-            border-color: #0daa82;
+            color: #11171a;
+            text-decoration: none;
+            background-color: var(--primary);
+            border-color: var(--primary);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.24);
+            transform: translateY(-1px);
         }
 
         .d-inline-flex {
@@ -539,9 +543,8 @@
         }
 
         .card-deck .card {
-            flex: 0 0 280px;
-            /* 固定宽度，不再撑满全行 */
-            max-width: 320px;
+            flex: 1 1 220px;
+            max-width: 280px;
             margin: 0 !important;
         }
 
@@ -696,6 +699,8 @@
             right: 30px;
             width: 44px;
             height: 44px;
+            padding: 0;
+            border: 0;
             background: var(--primary);
             color: #11171a;
             border-radius: 50%;
@@ -828,8 +833,131 @@
             display: inline-block;
             border-right: 3px solid var(--primary);
             animation: blink-caret 0.75s step-end infinite;
-            white-space: nowrap;
             min-height: 1.2em;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 5rem;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        section[id] {
+            scroll-margin-top: 5rem;
+        }
+
+        .hero-copy {
+            max-width: 760px;
+        }
+
+        .hero-copy .lead {
+            color: #c9d1d9;
+        }
+
+        .pricing-table .card {
+            height: 100%;
+        }
+
+        .pricing-table .card-body {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.25rem;
+        }
+
+        .pricing-table .card-title {
+            margin-top: 0.75rem;
+            margin-bottom: 0;
+            font-size: 1rem;
+            line-height: 1.45;
+        }
+
+        .pricing-table .btn {
+            margin-bottom: 0.4rem;
+        }
+
+        .blog-card {
+            height: 100%;
+        }
+
+        .blog-card .card-img-top {
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+        }
+
+        .blog-card .card-body {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .blog-card .card-text {
+            margin-bottom: 0;
+        }
+
+        .nav-link:focus-visible,
+        .btn:focus-visible,
+        a:focus-visible,
+        .switcher-trigger:focus-visible,
+        .scroll-top:focus-visible {
+            outline: 3px solid #fff;
+            outline-offset: 3px;
+        }
+
+        @media (max-width: 767.98px) {
+            .navbar {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+
+            .navbar-collapse {
+                padding-bottom: 0.75rem;
+            }
+
+            .nav-link {
+                padding-left: 0.5rem;
+            }
+
+            .bg-hero {
+                padding-top: 6rem;
+                padding-bottom: 3rem;
+            }
+
+            .hero-copy h1 {
+                font-size: clamp(2rem, 8vw, 3rem);
+            }
+
+            .pricing-table .card-deck {
+                gap: 1rem;
+            }
+
+            .pricing-table .card-deck .card {
+                flex: 1 1 100%;
+                max-width: none;
+            }
+
+            .blog-card {
+                margin-bottom: 1rem;
+            }
+
+            .scroll-top {
+                right: 16px;
+                bottom: 16px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
 
         @keyframes blink-caret {
@@ -906,52 +1034,6 @@
         }
     </style>
 
-    <script>
-        (function () {
-            document.addEventListener('contextmenu', function (e) { e.preventDefault(); return false; });
-            try {
-                if (document.styleSheets.length > 0 && document.styleSheets[0].insertRule) {
-                    document.styleSheets[0].insertRule('* { -webkit-user-select: none !important; -moz-user-select: none !important; -ms-user-select: none !important; user-select: none !important; }', 0);
-                } else {
-                    var style = document.createElement('style');
-                    style.type = 'text/css';
-                    style.innerHTML = '*{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}';
-                    document.head.appendChild(style);
-                }
-            } catch (e) { }
-            document.addEventListener('copy', function (e) { e.clipboardData.setData('text/plain', '内容受保护 - 禁止复制'); e.preventDefault(); return false; });
-            document.addEventListener('cut', function (e) { e.preventDefault(); return false; });
-            document.addEventListener('paste', function (e) { e.preventDefault(); return false; });
-            function safeCloseWindow() {
-                if (window._isClosing) return;
-                window._isClosing = true;
-                document.body.innerHTML = '<div style="background:#000;color:#ff3c6e;height:100vh;display:flex;align-items:center;justify-content:center;font-family:monospace;"><h1>⚠️ 安全协议触发 ⚠️<br>窗口即将关闭</h1></div>';
-                document.head.innerHTML = '';
-                try { window.close(); } catch (e) { }
-                setTimeout(function () { window.location.replace('about:blank'); }, 50);
-            }
-            window.addEventListener('keydown', function (e) {
-                var isCtrl = e.ctrlKey || e.metaKey;
-                var isShift = e.shiftKey;
-                var key = e.key ? e.key.toLowerCase() : '';
-                var keyCode = e.keyCode || e.which;
-                var dangerous = false;
-                if (isCtrl && (key === 'u' || key === 'c' || key === 's' || key === 'p')) dangerous = true;
-                if (key === 'f12' || keyCode === 123) dangerous = true;
-                if (isCtrl && isShift && (key === 'i' || key === 'j' || key === 'c')) dangerous = true;
-                if (isCtrl && (key === 'e' || key === 'r')) dangerous = true;
-                if (isCtrl && isShift && (key === 'u' || key === 'p')) dangerous = true;
-                if (dangerous) { e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation(); safeCloseWindow(); return false; }
-            });
-            document.addEventListener('dragstart', function (e) { e.preventDefault(); return false; });
-            if (window.location.protocol === 'view-source:' || window.location.href.startsWith('view-source:')) { safeCloseWindow(); }
-            console.log = console.warn = console.error = console.info = function () { };
-            document.body.style.userSelect = 'none';
-            document.body.style.webkitUserSelect = 'none';
-            window.addEventListener('keydown', function (e) { if (e.key === 'F3' || (e.ctrlKey && e.key === 'f')) { e.preventDefault(); return false; } });
-            window.matchMedia('print').addListener(function (mql) { if (mql.matches) safeCloseWindow(); });
-        })();
-    </script>
 </head>
 
 <body>
@@ -962,9 +1044,7 @@
     <section class="smart-scroll">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-md navbar-dark">
-                <a class="navbar-brand heading-black" href="#">ZZK</a>
-                <div class="bfw-s-hide banner bfw-height-half bfw-over-hide bfw-width-per bfw-pos-rel"
-                    style="color: #2596cc;"></div>
+                <a class="navbar-brand heading-black" href="#home" aria-label="返回首页">ZZK</a>
                 <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse"
                     data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -980,12 +1060,12 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item"><a class="nav-link page-scroll" href="#pricing">下载</a></li>
-                        <li class="nav-item"><a class="nav-link page-scroll" href="/browser">浏览器</a></li>
-                        <li class="nav-item"><a class="nav-link page-scroll"
+                        <li class="nav-item"><a class="nav-link" href="browser/">浏览器</a></li>
+                        <li class="nav-item"><a class="nav-link"
                                 href="https://zzk227227.github.io/yx">游戏盒子</a></li>
-                        <li class="nav-item"><a class="nav-link page-scroll"
+                        <li class="nav-item"><a class="nav-link"
                                 href="https://zzk227227.github.io/PCL">PCL(MC)</a></li>
-                        <li class="nav-item"><a class="nav-link page-scroll"
+                        <li class="nav-item"><a class="nav-link"
                                 href="https://zzk227227.github.io/easy">快捷链接</a></li>
                         <li class="nav-item"><a class="nav-link page-scroll" href="#blog">博客</a></li>
                     </ul>
@@ -993,23 +1073,21 @@
             </nav>
         </div>
     </section>
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=1392600538&auto=1&height=32"></iframe>
     <section class="py-7 py-md-0 bg-hero" id="home">
         <div class="container">
             <div class="row vh-md-100">
-                <div class="col-md-8 col-sm-10 col-12 mx-auto my-auto text-center">
-                    <h1 class="typing" id="typingText"></h1>
+                <div class="col-md-8 col-sm-10 col-12 mx-auto my-auto text-center hero-copy">
+                    <h1 class="typing" id="typingText">欢迎大家来到张泽凯的网站！</h1>
                     <p class="lead py-3">这里我收集了许多有用的应用，其中部分自制，报毒可正常运行。</p>
-                    <button class="btn btn-primary d-inline-flex flex-row align-items-center"
-                        onclick="window.location.href='https://zzk227227.github.io/yx'">
-                        继续
+                    <a class="btn btn-primary d-inline-flex flex-row align-items-center" href="#pricing">
+                        浏览下载
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="feather feather-arrow-right ml-2">
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                             <polyline points="12 5 19 12 12 19"></polyline>
                         </svg>
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -1027,41 +1105,41 @@
                     <div class="card-deck pricing-table">
                         <div class="card tilt-card">
                             <div class="card-body">
-                                <h6 class="card-title pt-2">贪吃蛇大作战（自制）</h6>
+                                <h3 class="card-title">贪吃蛇大作战（自制）</h3>
                                 <a href="https://easylink.cc/6jqwrx" class="btn btn-primary btn-sm">立即下载</a>
-                                <h6 class="card-title pt-2">PhpStorm9（PHP编辑器）</h6>
+                                <h3 class="card-title">PhpStorm9（PHP编辑器）</h3>
                                 <a href="https://easylink.cc/s9kmwh" class="btn btn-primary btn-sm">立即下载</a>
-                                <h6 class="card-title pt-2">哈利波特与凤凰社（自制）</h6>
+                                <h3 class="card-title">哈利波特与凤凰社（自制）</h3>
                                 <a href="https://easylink.cc/bysn8y" class="btn btn-primary btn-sm">立即下载</a>
                             </div>
                         </div>
                         <div class="card tilt-card">
                             <div class="card-body">
-                                <h4 class="card-title pt-2">Visual Studio</h4>
+                                <h3 class="card-title">Visual Studio</h3>
                                 <a href="https://easylink.cc/k77grq" class="btn btn-primary btn-sm">立即下载</a>
-                                <h4 class="card-title pt-2">james（网络勘察）</h4>
+                                <h3 class="card-title">james（网络勘察）</h3>
                                 <a href="https://easylink.cc/iem1gc" class="btn btn-primary btn-sm">立即下载</a>
-                                <h4 class="card-title pt-2">谷歌浏览器</h4>
+                                <h3 class="card-title">谷歌浏览器</h3>
                                 <a href="https://easylink.cc/ktdta1" class="btn btn-primary btn-sm">立即下载</a>
                             </div>
                         </div>
                         <div class="card tilt-card">
                             <div class="card-body">
-                                <h4 class="card-title pt-2">星球大战（自制）</h4>
+                                <h3 class="card-title">星球大战（自制）</h3>
                                 <a href="https://easylink.cc/v8zjqr" class="btn btn-primary btn-sm">立即下载</a>
-                                <h5 class="card-title pt-2">python 3.10.4</h5>
+                                <h3 class="card-title">Python 3.10.4</h3>
                                 <a href="https://easylink.cc/bkqbln" class="btn btn-primary btn-sm">立即下载</a>
-                                <h4 class="card-title pt-2">我的世界（自制）</h4>
+                                <h3 class="card-title">我的世界（自制）</h3>
                                 <a href="https://easylink.cc/8g3j9o" class="btn btn-primary btn-sm">立即下载</a>
                             </div>
                         </div>
                         <div class="card tilt-card">
                             <div class="card-body">
-                                <h6 class="card-title pt-2">Wireshark（网络抓包）</h6>
+                                <h3 class="card-title">Wireshark（网络抓包）</h3>
                                 <a href="https://easylink.cc/koq46i" class="btn btn-primary btn-sm">立即下载</a>
-                                <h4 class="card-title pt-2">firefox浏览器</h4>
+                                <h3 class="card-title">Firefox 浏览器</h3>
                                 <a href="https://easylink.cc/faej2n" class="btn btn-primary btn-sm">立即下载</a>
-                                <h5 class="card-title pt-2">sublime_text</h5>
+                                <h3 class="card-title">Sublime Text</h3>
                                 <a href="https://easylink.cc/5swqri" class="btn btn-primary btn-sm">立即下载</a>
                             </div>
                         </div>
@@ -1080,10 +1158,10 @@
             </div>
             <div class="row mt-5">
                 <div class="col-md-4">
-                    <div class="card tilt-card">
-                        <a href="#"><img class="card-img-top img-raised" src="img/pi.png" alt="Blog 1"></a>
+                    <div class="card tilt-card blog-card">
+                        <a href="https://blog.csdn.net/2401_86802274/article/details/144490404?spm=1001.2014.3001.5501" target="_blank" rel="noopener noreferrer"><img class="card-img-top img-raised" src="img/pi.png" alt="树莓派系统烧录和故障排查"></a>
                         <div class="card-body">
-                            <a href="#" class="card-title mb-2">
+                            <a href="https://blog.csdn.net/2401_86802274/article/details/144490404?spm=1001.2014.3001.5501" target="_blank" rel="noopener noreferrer" class="card-title mb-2">
                                 <h5>树莓派系统烧录和故障排查</h5>
                             </a>
                             <p class="text-muted small-xl mb-2">2024/12/15</p>
@@ -1094,10 +1172,10 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card tilt-card">
-                        <a href="#"><img class="card-img-top img-raised" src="img/yy.png" alt="Blog 2"></a>
+                    <div class="card tilt-card blog-card">
+                        <a href="https://blog.csdn.net/2401_86802274/article/details/141355740?spm=1001.2014.3001.5501" target="_blank" rel="noopener noreferrer"><img class="card-img-top img-raised" src="img/yy.png" alt="如何在 Kali Linux 里安装微信"></a>
                         <div class="card-body">
-                            <a href="#" class="card-title mb-2">
+                            <a href="https://blog.csdn.net/2401_86802274/article/details/141355740?spm=1001.2014.3001.5501" target="_blank" rel="noopener noreferrer" class="card-title mb-2">
                                 <h5>如何在kali linux里安装微信？</h5>
                             </a>
                             <p class="text-muted small-xl mb-2">2024/08/20</p>
@@ -1108,10 +1186,10 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card tilt-card">
-                        <a href="#"><img class="card-img-top img-raised" src="img/py.png" alt="Blog 3"></a>
+                    <div class="card tilt-card blog-card">
+                        <a href="https://blog.csdn.net/2401_86802274/article/details/141300882?spm=1001.2014.3001.5501" target="_blank" rel="noopener noreferrer"><img class="card-img-top img-raised" src="img/py.png" alt="Python 简单爬虫"></a>
                         <div class="card-body">
-                            <a href="#" class="card-title mb-2">
+                            <a href="https://blog.csdn.net/2401_86802274/article/details/141300882?spm=1001.2014.3001.5501" target="_blank" rel="noopener noreferrer" class="card-title mb-2">
                                 <h5>Python简单的爬虫。</h5>
                             </a>
                             <p class="text-muted small-xl mb-2">2024/12/21</p>
@@ -1123,7 +1201,6 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-6"></div>
         </div>
     </section>
 
@@ -1145,7 +1222,7 @@
         </div>
     </footer>
 
-    <div class="scroll-top"><i class="fa fa-angle-up" aria-hidden="true"></i></div>
+    <button class="scroll-top" type="button" aria-label="返回顶部"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
 
     <div class="switcher-wrap">
         <div class="switcher-trigger"><span class="fa fa-gear"></span></div>
@@ -1180,11 +1257,15 @@
 
             $('a.page-scroll').bind('click', function (event) {
                 var $anchor = $(this);
-                $('html, body').stop().animate({ scrollTop: $($anchor.attr('href')).offset().top - 20 }, 1000);
+                var $target = $($anchor.attr('href'));
+                if (!$target.length) return;
+                $('html, body').stop().animate({ scrollTop: $target.offset().top - 20 }, 1000);
                 event.preventDefault();
             });
 
-            $('.slick-about').slick({ slidesToShow: 1, slidesToScroll: 1, autoplay: true, autoplaySpeed: 3000, dots: true, arrows: false });
+            if ($('.slick-about').length) {
+                $('.slick-about').slick({ slidesToShow: 1, slidesToScroll: 1, autoplay: true, autoplaySpeed: 3000, dots: true, arrows: false });
+            }
 
             var scrollTop = 0;
             $(window).scroll(function () {
@@ -1196,7 +1277,6 @@
                 scrollTop = scroll;
                 if (scroll >= 600) { $('.scroll-top').addClass('active'); }
                 else { $('.scroll-top').removeClass('active'); }
-                return false;
             });
 
             $('.scroll-top').click(function () { $('html, body').stop().animate({ scrollTop: 0 }, 1000); });
@@ -1227,8 +1307,10 @@
                     setTimeout(typeWriter, speed);
                 }
             }
-            // 启动打字
-            setTimeout(typeWriter, 300);
+            if (target) {
+                target.textContent = '';
+                setTimeout(typeWriter, 300);
+            }
         });
 
         // 卡片 3D 倾斜
@@ -1446,11 +1528,10 @@
             window.addEventListener('mouseleave', function () { mouse.isActive = false; trailPoints = []; });
             window.addEventListener('click', function (e) { ripples.push(new Ripple(e.clientX, e.clientY)); });
             window.addEventListener('touchmove', function (e) {
-                e.preventDefault();
                 var t = e.touches[0];
                 mouse.x = t.clientX; mouse.y = t.clientY; mouse.isActive = true;
                 updateTrail({ clientX: t.clientX, clientY: t.clientY });
-            }, { passive: false });
+            }, { passive: true });
             window.addEventListener('touchend', function () { mouse.isActive = false; trailPoints = []; });
             window.addEventListener('touchstart', function (e) { var t = e.touches[0]; ripples.push(new Ripple(t.clientX, t.clientY)); });
 
